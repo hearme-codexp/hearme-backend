@@ -13,7 +13,5 @@ namespace hearme_backend.domain.Entities
         [Required]
         [StringLength(50, MinimumLength = 4)]
         public string Senha { get; set; }
-
-        public ICollection<UsuarioPermissaoDomain> UsuariosPermissoes { get; set; }
     }
 }
