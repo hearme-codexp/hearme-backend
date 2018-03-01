@@ -301,11 +301,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\CodeXP\\Backend\\hearme-backend\\hearme-backend.domain\\hearme-backend.domain.csproj",
+      "projectUniqueName": "C:\\Users\\CodeXP\\hearme-backend\\hearme-backend.domain\\hearme-backend.domain.csproj",
       "projectName": "hearme-backend.domain",
-      "projectPath": "c:\\Users\\CodeXP\\Backend\\hearme-backend\\hearme-backend.domain\\hearme-backend.domain.csproj",
+      "projectPath": "C:\\Users\\CodeXP\\hearme-backend\\hearme-backend.domain\\hearme-backend.domain.csproj",
       "packagesPath": "C:\\Users\\CodeXP\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\CodeXP\\Backend\\hearme-backend\\hearme-backend.domain\\obj\\",
+      "outputPath": "C:\\Users\\CodeXP\\hearme-backend\\hearme-backend.domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

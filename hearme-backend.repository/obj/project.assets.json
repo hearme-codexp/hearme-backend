@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
+      "Microsoft.AspNet.Mvc.DataAnnotations/6.0.0-rc1-final": {
+        "type": "package",
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Mvc.DataAnnotations.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Mvc.DataAnnotations.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore/2.1.0-preview1-final": {
         "type": "package",
         "dependencies": {
@@ -753,6 +762,10 @@
       "hearme-backend.domain/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Microsoft.AspNet.Mvc.DataAnnotations": "6.0.0-rc1-final",
+          "System.ComponentModel.Annotations": "4.4.1"
+        },
         "compile": {
           "bin/placeholder/hearme-backend.domain.dll": {}
         },
@@ -763,6 +776,19 @@
     }
   },
   "libraries": {
+    "Microsoft.AspNet.Mvc.DataAnnotations/6.0.0-rc1-final": {
+      "sha512": "1PXLllWma1/uXZJyYUWkhvMw87udjB4AfLMhVIGz2mF3KOPQgzRcdS8Eqze4ypty5+Up2QvIHBUjY2H79e2ezQ==",
+      "type": "package",
+      "path": "microsoft.aspnet.mvc.dataannotations/6.0.0-rc1-final",
+      "files": [
+        "lib/dotnet5.4/Microsoft.AspNet.Mvc.DataAnnotations.dll",
+        "lib/dotnet5.4/Microsoft.AspNet.Mvc.DataAnnotations.xml",
+        "lib/net451/Microsoft.AspNet.Mvc.DataAnnotations.dll",
+        "lib/net451/Microsoft.AspNet.Mvc.DataAnnotations.xml",
+        "microsoft.aspnet.mvc.dataannotations.6.0.0-rc1-final.nupkg.sha512",
+        "microsoft.aspnet.mvc.dataannotations.nuspec"
+      ]
+    },
     "Microsoft.EntityFrameworkCore/2.1.0-preview1-final": {
       "sha512": "EQnsSvDVHaVIJg3hnSgwM6sTg4tIvbzUD/sizlP8lou3JQrLRAvqMrCxB/4juKi8Q83Z/sp7m7X8lOOZP5dHcw==",
       "type": "package",
@@ -3072,8 +3098,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "c:\\Users\\CodeXP\\Backend\\hearme-backend\\hearme-backend.domain\\hearme-backend.domain.csproj": {
-              "projectPath": "c:\\Users\\CodeXP\\Backend\\hearme-backend\\hearme-backend.domain\\hearme-backend.domain.csproj"
+            "C:\\Users\\CodeXP\\hearme-backend\\hearme-backend.domain\\hearme-backend.domain.csproj": {
+              "projectPath": "C:\\Users\\CodeXP\\hearme-backend\\hearme-backend.domain\\hearme-backend.domain.csproj"
             }
           }
         }
@@ -3113,5 +3139,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Mvc.DataAnnotations 6.0.0-rc1-final' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Mvc.DataAnnotations",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
 }
