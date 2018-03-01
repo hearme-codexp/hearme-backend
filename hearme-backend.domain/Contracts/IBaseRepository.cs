@@ -7,6 +7,7 @@ namespace hearme_backend.domain.Contracts
         IEnumerable<T> Listar(string[] includes = null);
         int Atualizar(T dados);
         int Inserir(T dados);
+        int Deletar(T dados);
         T Buscar(int id, string[] includes = null);
 
     }
