@@ -12541,11 +12541,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CodeXP\\Backend\\hearme-backend\\hearme-backend.webapi\\hearme-backend.webapi.csproj",
+      "projectUniqueName": "C:\\Users\\CodeXP\\hearme-backend\\hearme-backend.webapi\\hearme-backend.webapi.csproj",
       "projectName": "hearme-backend.webapi",
-      "projectPath": "C:\\Users\\CodeXP\\Backend\\hearme-backend\\hearme-backend.webapi\\hearme-backend.webapi.csproj",
+      "projectPath": "C:\\Users\\CodeXP\\hearme-backend\\hearme-backend.webapi\\hearme-backend.webapi.csproj",
       "packagesPath": "C:\\Users\\CodeXP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CodeXP\\Backend\\hearme-backend\\hearme-backend.webapi\\obj\\",
+      "outputPath": "C:\\Users\\CodeXP\\hearme-backend\\hearme-backend.webapi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -1,8 +1,6 @@
-
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
 
 namespace hearme_backend.domain.Entities
 {
@@ -14,7 +12,7 @@ namespace hearme_backend.domain.Entities
 
         [Required]
         [StringLength(20)]
-        Genero Genero {get; set;}
+        GeneroDomain Genero {get; set;}
 
         [Required]
         [DataType(DataType.DateTime)]
@@ -22,10 +20,15 @@ namespace hearme_backend.domain.Entities
 
         [Required]
         [StringLength(20)]
-        GrauDeficiencia GrauDeficiencia {get; set;}
+        GrauDeficienciaDomain GrauDeficiencia {get; set;}
         
         [Required]
         [DataType(DataType.DateTime)]
         public DateTime DataCriacao { get; set; }
+        
+        [ForeignKey("UsuarioId")]
+        public UsuarioDomain Usuario { get; set; }
+        
+        public int UsuarioId { get; set; }
     }
 }

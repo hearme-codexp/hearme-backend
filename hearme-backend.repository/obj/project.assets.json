@@ -3051,11 +3051,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\CodeXP\\Backend\\hearme-backend\\hearme-backend.repository\\hearme-backend.repository.csproj",
+      "projectUniqueName": "C:\\Users\\CodeXP\\hearme-backend\\hearme-backend.repository\\hearme-backend.repository.csproj",
       "projectName": "hearme-backend.repository",
-      "projectPath": "c:\\Users\\CodeXP\\Backend\\hearme-backend\\hearme-backend.repository\\hearme-backend.repository.csproj",
+      "projectPath": "C:\\Users\\CodeXP\\hearme-backend\\hearme-backend.repository\\hearme-backend.repository.csproj",
       "packagesPath": "C:\\Users\\CodeXP\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\CodeXP\\Backend\\hearme-backend\\hearme-backend.repository\\obj\\",
+      "outputPath": "C:\\Users\\CodeXP\\hearme-backend\\hearme-backend.repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
