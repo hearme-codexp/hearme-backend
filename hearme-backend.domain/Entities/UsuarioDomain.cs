@@ -15,8 +15,7 @@ namespace hearme_backend.domain.Entities
         [StringLength(20, MinimumLength = 4)]
         public string Senha { get; set; }
 
-        [ForeignKey("ClienteId")]
-        public UsuarioDomain Cliente { get; set; }
-        public int ClienteId { get; set; }
+        [StringLength(100)]
+        public string Token { get; set; }
     }
 }
