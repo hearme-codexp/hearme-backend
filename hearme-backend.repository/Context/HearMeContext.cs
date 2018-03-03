@@ -1,7 +1,8 @@
+using System;
 using hearme_backend.domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace hearme_backend.repository.Context
+namespace hearme_backend.repository
 {
     public class HearMeContext : DbContext
     {
