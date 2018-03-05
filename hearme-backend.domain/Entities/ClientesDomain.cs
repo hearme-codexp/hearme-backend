@@ -10,7 +10,7 @@ namespace hearme_backend.domain.Entities
         [StringLength(100)]
         string Nome {get; set;}
 
-        [Required]
+
         [DataType(DataType.DateTime)]
         DateTime DataNascimento {get; set;}
       
