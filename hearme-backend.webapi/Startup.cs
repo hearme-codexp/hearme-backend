@@ -1,34 +1,26 @@
 ﻿using System;
-
 using System.Collections.Generic;
-
 using System.Linq;
-
 using System.Threading.Tasks;
 using hearme_backend.domain.Contracts;
 using hearme_backend.repository;
 using hearme_backend.repository.Repositories;
 using Microsoft.AspNetCore.Builder;
-
 using Microsoft.AspNetCore.Hosting;
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
-
-
 namespace hearme_backend.webapi
-
 {
 
     public class Startup
 
     {
-         public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration){
+        public Startup(IConfiguration configuration)
+        {
 
             Configuration = configuration;
         }
@@ -40,7 +32,8 @@ namespace hearme_backend.webapi
         {
             services.AddDbContext<HearMeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            services.AddMvc().AddJsonOptions(options => {
+            services.AddMvc().AddJsonOptions(options =>
+            {
 
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 
