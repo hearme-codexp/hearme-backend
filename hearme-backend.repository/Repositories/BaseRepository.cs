@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using hearme_backend.domain.Contracts;
-using hearme_backend.repository.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace hearme_backend.repository.Repositories
@@ -39,7 +38,7 @@ namespace hearme_backend.repository.Repositories
         {
             try
             {
-                _dbContext.Set<T>().Add(dados);
+                _dbContext.Set<T>().Remove(dados);
                 return _dbContext.SaveChanges();
             }
             catch(System.Exception ex)
