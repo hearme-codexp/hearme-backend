@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace hearmebackend.repository.Migrations
 {
-    public partial class BancoInicial : Migration
+    public partial class BancoInicial1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,8 @@ namespace hearmebackend.repository.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,7 +27,8 @@ namespace hearmebackend.repository.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,6 +59,7 @@ namespace hearmebackend.repository.Migrations
                     DataCriacao = table.Column<DateTime>(nullable: false),
                     GeneroId = table.Column<int>(nullable: false),
                     GrauDeficienciaId = table.Column<int>(nullable: false),
+                    Nome = table.Column<string>(maxLength: 100, nullable: false),
                     UsuarioId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
