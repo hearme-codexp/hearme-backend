@@ -16,7 +16,7 @@ namespace hearme_backend.webapi.Controllers
     }
         [HttpGet]
         public IActionResult GetAction(){
-            return Ok(_clientesRepository.Listar(new string[]{"Genero","GrauDeficiencia","Usuario"}));
+            return Ok(_clientesRepository.Listar());
         }
 
         [HttpGet("{id}")]
