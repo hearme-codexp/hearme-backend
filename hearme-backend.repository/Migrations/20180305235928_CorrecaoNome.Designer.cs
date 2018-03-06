@@ -11,8 +11,8 @@ using System;
 namespace hearmebackend.repository.Migrations
 {
     [DbContext(typeof(HearMeContext))]
-    [Migration("20180305232819_BancoInicial")]
-    partial class BancoInicial
+    [Migration("20180305235928_CorrecaoNome")]
+    partial class CorrecaoNome
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,10 @@ namespace hearmebackend.repository.Migrations
 
                     b.Property<int>("GrauDeficienciaId");
 
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
                     b.Property<int>("UsuarioId");
 
                     b.HasKey("Id");
@@ -50,6 +54,10 @@ namespace hearmebackend.repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
                     b.HasKey("Id");
 
                     b.ToTable("Generos");
@@ -60,6 +68,10 @@ namespace hearmebackend.repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
                     b.HasKey("Id");
 
                     b.ToTable("GrausDeficiencias");
@@ -69,6 +81,8 @@ namespace hearmebackend.repository.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ClienteId");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -82,6 +96,8 @@ namespace hearmebackend.repository.Migrations
                         .HasMaxLength(100);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
 
                     b.ToTable("Usuarios");
                 });
@@ -101,6 +117,14 @@ namespace hearmebackend.repository.Migrations
                     b.HasOne("hearme_backend.domain.Entities.UsuarioDomain", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("hearme_backend.domain.Entities.UsuarioDomain", b =>
+                {
+                    b.HasOne("hearme_backend.domain.Entities.ClientesDomain", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

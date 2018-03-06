@@ -8,7 +8,7 @@ namespace hearme_backend.domain.Entities
     {
         [Required]
         [StringLength(100)]
-        string Nome {get; set;}
+        public string Nome {get; set;}
 
 
         [DataType(DataType.DateTime)]

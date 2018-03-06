@@ -11,8 +11,8 @@ using System;
 namespace hearmebackend.repository.Migrations
 {
     [DbContext(typeof(HearMeContext))]
-    [Migration("20180305232819_BancoInicial")]
-    partial class BancoInicial
+    [Migration("20180306000247_RemocaoFKIdCliente")]
+    partial class RemocaoFKIdCliente
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,10 @@ namespace hearmebackend.repository.Migrations
 
                     b.Property<int>("GrauDeficienciaId");
 
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
                     b.Property<int>("UsuarioId");
 
                     b.HasKey("Id");
@@ -50,6 +54,10 @@ namespace hearmebackend.repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
                     b.HasKey("Id");
 
                     b.ToTable("Generos");
@@ -59,6 +67,10 @@ namespace hearmebackend.repository.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(20);
 
                     b.HasKey("Id");
 
