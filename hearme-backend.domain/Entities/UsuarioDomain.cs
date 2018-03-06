@@ -8,11 +8,11 @@ namespace hearme_backend.domain.Entities
     public class UsuarioDomain : BaseDomain
     {
         [Required]
-        [StringLength(50)]
+        [EmailAddress(ErrorMessage = "Por favor insira um e-mail válido.")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(20, MinimumLength = 4)]
+        [StringLength(20)] 
         public string Senha { get; set; }
 
         [StringLength(100)]
