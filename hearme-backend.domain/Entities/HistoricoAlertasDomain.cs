@@ -7,9 +7,9 @@ namespace hearme_backend.domain.Entities
     public class HistoricoAlertasDomain : BaseDomain
     {
               
-        [ForeignKey("UsuarioId")]
-        public UsuarioDomain Usuario { get; set; }
-        public int UsuarioId { get; set; }
+        [ForeignKey("ClienteId")]
+        public ClientesDomain Cliente { get; set; }
+        public int ClienteId { get; set; }
 
         [ForeignKey("AlertaId")]
         public AlertaDomain Alerta { get; set; }

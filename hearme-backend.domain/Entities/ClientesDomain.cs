@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -29,5 +30,7 @@ namespace hearme_backend.domain.Entities
         [ForeignKey("GrauDeficienciaId")]
         public GrauDeficienciaDomain GrausDeficiencia { get; set; }
         public int GrauDeficienciaId { get; set; }
+
+        public ICollection<HistoricoAlertasDomain> HistoricosAlertasDomain { get; set; }
     }
 }

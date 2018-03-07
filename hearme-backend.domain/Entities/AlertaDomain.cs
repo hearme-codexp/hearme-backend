@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace hearme_backend.domain.Entities
@@ -16,5 +17,7 @@ namespace hearme_backend.domain.Entities
         [Required]
         [Range(1,10)]
         public int DuracaoVibracoes{get; set;}        
+
+        public ICollection<HistoricoAlertasDomain> HistoricosAlertasDomain { get; set; }
     }
 }
