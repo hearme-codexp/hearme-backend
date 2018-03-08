@@ -32,7 +32,6 @@ namespace hearme_backend.webapi
 
         {
             services.AddDbContext<HearMeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddMvc().AddJsonOptions(options =>
             {
 

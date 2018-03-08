@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace hearme_backend.domain.Entities
 {
-    public class UsuarioDomain : BaseDomain
+    public class UsuarioDomain : Base
     {
         [Required]
         [EmailAddress(ErrorMessage = "Por favor insira um e-mail válido.")]

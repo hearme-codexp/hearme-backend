@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace hearme_backend.domain.Entities
 {
-    public class BaseDomain
+    public class Base
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

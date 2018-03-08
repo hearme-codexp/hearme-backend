@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace hearme_backend.domain.Entities
 {
-    public class AlertaDomain : BaseDomain
+    public class Alerta : Base
     {
         [Required]
         [StringLength(100)]

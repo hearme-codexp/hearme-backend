@@ -12,14 +12,10 @@ namespace hearme_backend.repository
         }
 
         public DbSet<ClientesDomain> Clientes {get; set;}
-        public DbSet<GeneroDomain> Generos {get; set;}
-        public DbSet<GrauDeficienciaDomain> GrausDeficiencias {get; set;}
         public DbSet<UsuarioDomain> Usuarios {get; set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder){
             modelBuilder.Entity<ClientesDomain>().ToTable("Clientes");
-            modelBuilder.Entity<GeneroDomain>().ToTable("Generos");
-            modelBuilder.Entity<GrauDeficienciaDomain>().ToTable("GrausDeficiencias");
             modelBuilder.Entity<UsuarioDomain>().ToTable("Usuarios");
 
             base.OnModelCreating(modelBuilder);

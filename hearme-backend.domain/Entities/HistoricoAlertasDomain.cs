@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace hearme_backend.domain.Entities
 {
-    public class HistoricoAlertasDomain : BaseDomain
+    public class HistoricoAlertasDomain : Base
     {
               
         [ForeignKey("ClienteId")]
@@ -12,7 +12,7 @@ namespace hearme_backend.domain.Entities
         public int ClienteId { get; set; }
 
         [ForeignKey("AlertaId")]
-        public AlertaDomain Alerta { get; set; }
+        public Alerta Alerta { get; set; }
         public int AlertaId { get; set; }
 
         [Required]
