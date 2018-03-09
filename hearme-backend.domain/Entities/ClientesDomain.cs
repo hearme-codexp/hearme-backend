@@ -12,9 +12,8 @@ namespace hearme_backend.domain.Entities
         [StringLength(100)]
         public string Nome {get; set;}
 
-
         [DataType(DataType.DateTime)]
-        DateTime DataNascimento {get; set;}
+        public DateTime DataNascimento {get; set;}
       
         [Required]
         [DataType(DataType.DateTime)]
