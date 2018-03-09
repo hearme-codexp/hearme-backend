@@ -31,7 +31,7 @@ namespace hearme_backend.webapi
         public void ConfigureServices(IServiceCollection services)
 
         {
-            services.AddDbContext<HearMeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<HearMeContext>(options => options.UseSqlite(Configuration.GetConnectionString("SqliteConnection")));
             services.AddMvc().AddJsonOptions(options =>
             {
 
