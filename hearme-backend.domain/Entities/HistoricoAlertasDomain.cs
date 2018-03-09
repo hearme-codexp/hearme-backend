@@ -21,6 +21,10 @@ namespace hearme_backend.domain.Entities
 
         [Required]
         [StringLength(100)]
-        public string Localizacao {get; set;}
+        public float LocLatitude {get; set;}
+
+        [Required]
+        [StringLength(100)]
+        public float LocLatidude {get; set;}
     }
 }
