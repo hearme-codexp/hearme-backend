@@ -12,15 +12,14 @@ using System;
 namespace hearmebackend.repository.Migrations
 {
     [DbContext(typeof(HearMeContext))]
-    [Migration("20180308003234_ReestruturacaoTotal")]
-    partial class ReestruturacaoTotal
+    [Migration("20180309221053_AlteracaoParaSQLite")]
+    partial class AlteracaoParaSQLite
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "2.0.1-rtm-125");
 
             modelBuilder.Entity("hearme_backend.domain.Entities.Alerta", b =>
                 {
@@ -48,6 +47,8 @@ namespace hearmebackend.repository.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DataCriacao");
+
+                    b.Property<DateTime>("DataNascimento");
 
                     b.Property<int>("Genero");
 
@@ -77,8 +78,10 @@ namespace hearmebackend.repository.Migrations
 
                     b.Property<DateTime>("DataHorarioAlerta");
 
-                    b.Property<string>("Localizacao")
-                        .IsRequired()
+                    b.Property<float>("LocLatidude")
+                        .HasMaxLength(100);
+
+                    b.Property<float>("LocLatitude")
                         .HasMaxLength(100);
 
                     b.HasKey("Id");
