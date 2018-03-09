@@ -1,9 +1,8 @@
 using System;
 using hearme_backend.domain.Contracts;
 using hearme_backend.domain.Entities;
-using hearme_backend.domain.Repository;
-using hearme_backend.domain.TO;
 using hearme_backend.repository;
+using hearme_backend.webapi.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace hearme_backend.webapi.Controllers
@@ -18,8 +17,9 @@ namespace hearme_backend.webapi.Controllers
             this.db = db;
         }
 
+        [Route("App")]
         [HttpPost]
-        public IActionResult PostAction([FromBody]CadastroViewModel cadastro)
+        public IActionResult PostActionMobile([FromBody]CadastroApp cadastro)
         {
             var usuario = new UsuarioDomain
             {
@@ -31,6 +31,30 @@ namespace hearme_backend.webapi.Controllers
                 Nome = cadastro.Nome,
                 Usuario = usuario,
                 DataCriacao = DateTime.Now
+            };
+            db.Usuarios.Add(usuario);
+            db.Clientes.Add(cliente);
+            db.SaveChanges();
+            return Ok();
+        }
+
+        [Route("Web")]
+        [HttpPost]
+        public IActionResult PostActionWeb([FromBody]CadastroWeb cadastro)
+        {
+            var usuario = new UsuarioDomain
+            {
+                Email = cadastro.Email,
+                Senha = cadastro.Senha
+            };
+            var cliente = new ClientesDomain
+            {
+                Nome = cadastro.Nome,
+                Usuario = usuario,
+                DataCriacao = DateTime.Now,
+                DataNascimento = cadastro.DataDeNascimento,
+                Genero = cadastro.Genero,
+                GrauDeficiencia = cadastro.GrauDeDeficiencia
             };
             db.Usuarios.Add(usuario);
             db.Clientes.Add(cliente);

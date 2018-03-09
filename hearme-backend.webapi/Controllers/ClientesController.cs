@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace hearme_backend.webapi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/")]
     public class ClientesController : Controller
     {
         private HearMeContext _clientesContext;
