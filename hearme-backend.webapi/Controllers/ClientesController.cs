@@ -18,7 +18,7 @@ namespace hearme_backend.webapi.Controllers
         {
             _clientesContext = context;
         }
-
+        
         [HttpGet]
         public IActionResult GetAction()
         {

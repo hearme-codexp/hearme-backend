@@ -20,11 +20,9 @@ namespace hearme_backend.domain.Entities
         public DateTime DataHorarioAlerta { get; set; }
 
         [Required]
-        [StringLength(100)]
-        public float LocLatitude {get; set;}
+        public float Lat {get; set;}
 
         [Required]
-        [StringLength(100)]
-        public float LocLatidude {get; set;}
+        public float Lon {get; set;}
     }
 }

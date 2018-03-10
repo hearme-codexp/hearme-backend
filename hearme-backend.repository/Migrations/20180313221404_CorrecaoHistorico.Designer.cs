@@ -12,8 +12,8 @@ using System;
 namespace hearmebackend.repository.Migrations
 {
     [DbContext(typeof(HearMeContext))]
-    [Migration("20180310003608_AlertaComENUMParaTipo")]
-    partial class AlertaComENUMParaTipo
+    [Migration("20180313221404_CorrecaoHistorico")]
+    partial class CorrecaoHistorico
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -74,11 +74,9 @@ namespace hearmebackend.repository.Migrations
 
                     b.Property<DateTime>("DataHorarioAlerta");
 
-                    b.Property<float>("LocLatidude")
-                        .HasMaxLength(100);
+                    b.Property<float>("Lat");
 
-                    b.Property<float>("LocLatitude")
-                        .HasMaxLength(100);
+                    b.Property<float>("Lon");
 
                     b.HasKey("Id");
 

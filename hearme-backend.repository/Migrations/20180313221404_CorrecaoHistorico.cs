@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace hearmebackend.repository.Migrations
 {
-    public partial class AlertaComENUMParaTipo : Migration
+    public partial class CorrecaoHistorico : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -70,8 +70,8 @@ namespace hearmebackend.repository.Migrations
                     AlertaId = table.Column<int>(nullable: false),
                     ClienteId = table.Column<int>(nullable: false),
                     DataHorarioAlerta = table.Column<DateTime>(nullable: false),
-                    LocLatidude = table.Column<float>(maxLength: 100, nullable: false),
-                    LocLatitude = table.Column<float>(maxLength: 100, nullable: false)
+                    Lat = table.Column<float>(nullable: false),
+                    Lon = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -73,11 +73,9 @@ namespace hearmebackend.repository.Migrations
 
                     b.Property<DateTime>("DataHorarioAlerta");
 
-                    b.Property<float>("LocLatidude")
-                        .HasMaxLength(100);
+                    b.Property<float>("Lat");
 
-                    b.Property<float>("LocLatitude")
-                        .HasMaxLength(100);
+                    b.Property<float>("Lon");
 
                     b.HasKey("Id");
 
