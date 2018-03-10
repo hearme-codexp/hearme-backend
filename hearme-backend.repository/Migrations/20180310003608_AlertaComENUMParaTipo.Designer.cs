@@ -12,9 +12,10 @@ using System;
 namespace hearmebackend.repository.Migrations
 {
     [DbContext(typeof(HearMeContext))]
-    partial class HearMeContextModelSnapshot : ModelSnapshot
+    [Migration("20180310003608_AlertaComENUMParaTipo")]
+    partial class AlertaComENUMParaTipo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
