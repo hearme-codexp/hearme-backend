@@ -64,11 +64,11 @@ namespace hearme_backend.webapi
 
                 // Set the comments path for the Swagger JSON and UI.
                 var basePath = AppContext.BaseDirectory;
-                var xmlPath = Path.Combine(basePath, "HearMe.xml"); 
+                var xmlPath = Path.Combine(basePath, "HearMe.xml");
                 c.IncludeXmlComments(xmlPath);
-    });
+            });
         }
-        
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
