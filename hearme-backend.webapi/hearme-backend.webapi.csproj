@@ -10,10 +10,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.2.0" />
   </ItemGroup>
 
    <ItemGroup>
       <ProjectReference Include="..\hearme-backend.domain\hearme-backend.domain.csproj" />
       <ProjectReference Include="..\hearme-backend.repository\hearme-backend.repository.csproj" />
   </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <DocumentationFile>bin\Debug\netcoreapp2.0\HearMe.xml</DocumentationFile>
+  </PropertyGroup>
+  
 </Project>

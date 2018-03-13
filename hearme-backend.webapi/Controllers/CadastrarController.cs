@@ -10,6 +10,7 @@ namespace hearme_backend.webapi.Controllers
     [Route("api/[controller]")]
     public class CadastrarController : Controller
     {
+        
         private readonly HearMeContext db;
 
         public CadastrarController(HearMeContext db)
@@ -17,8 +18,21 @@ namespace hearme_backend.webapi.Controllers
             this.db = db;
         }
 
-        [Route("App")]
+        
+        /// <summary>
+        /// Deve ser utilizado para o cadastro de novos usuários via Mobile. 
+        /// </summary>
+        /// <remarks>
+        /// Realiza o cadastro do Usuario contendo Email e Senha.
+        /// Após o cadastro do usuário deverá ser realizado o cadastro Clientes 
+        /// com a inclusão do Nome. Os dados Usuario e
+        /// DataCriacao serão cadastrados automaticamente.
+        /// </remarks>
+        /// <param name="cadastro"></param>
+        /// <returns> Caso não apresente erro, foram adicionados os dados referentes ao Usuario 
+        /// e Clientes nas suas respectivas tabelas as alterações foram salvas no BD.</returns>
         [HttpPost]
+        [Route("App")]
         public IActionResult PostActionMobile([FromBody]CadastroApp cadastro)
         {
             var usuario = new UsuarioDomain
@@ -38,6 +52,19 @@ namespace hearme_backend.webapi.Controllers
             return Ok();
         }
 
+
+        /// <summary>
+        /// Deve ser utilizado para o cadastro de novos usuários via Web. 
+        /// </summary>
+        /// <remarks>
+        /// Realiza o cadastro do Usuario contendo Email e Senha.
+        ///Após o cadastro do usuário deverá ser realizado o cadastro Clientes 
+        ///com a inclusão do Nome, DataNascimento, Genero, GrauDeficiencia. Os dados Usuario e
+        ///DataCriacao serão cadastrados automaticamente.
+        /// </remarks>
+        /// <param name="cadastro"></param>
+        /// <returns>Caso não apresente erro, foram adicionados os dados referentes ao Usuario 
+        /// e Clientes nas suas respectivas tabelas as alterações foram salvas no BD.</returns>
         [Route("Web")]
         [HttpPost]
         public IActionResult PostActionWeb([FromBody]CadastroWeb cadastro)

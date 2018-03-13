@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace hearme_backend.webapi.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     [Route("api/[controller]/")]
     public class UsuarioController : Controller
     {
@@ -35,7 +36,7 @@ namespace hearme_backend.webapi.Controllers
             }
             return Ok(usuario);
         }
-
+        
         [HttpPost]
         public IActionResult PostAction([FromBody]UsuarioDomain usuario)
         {
