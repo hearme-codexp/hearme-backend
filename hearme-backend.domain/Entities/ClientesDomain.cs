@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using hearme_backend.domain.DataTypes;
@@ -26,6 +27,9 @@ namespace hearme_backend.domain.Entities
         public Genero Genero { get; set; }
 
         public GrauDeficiencia GrauDeficiencia { get; set; }
+        
+        [DefaultValue(false)]
+        public bool Desativado { get; set; }
 
         public ICollection<HistoricoAlertasDomain> HistoricosAlertasDomain { get; set; } 
     }

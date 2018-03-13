@@ -12,8 +12,8 @@ using System;
 namespace hearmebackend.repository.Migrations
 {
     [DbContext(typeof(HearMeContext))]
-    [Migration("20180313221404_CorrecaoHistorico")]
-    partial class CorrecaoHistorico
+    [Migration("20180313234156_CorrecaoCliente")]
+    partial class CorrecaoCliente
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,6 +45,8 @@ namespace hearmebackend.repository.Migrations
                     b.Property<DateTime>("DataCriacao");
 
                     b.Property<DateTime>("DataNascimento");
+
+                    b.Property<bool>("Desativado");
 
                     b.Property<int>("Genero");
 

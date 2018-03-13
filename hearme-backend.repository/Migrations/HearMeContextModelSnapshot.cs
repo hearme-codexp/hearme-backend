@@ -45,6 +45,8 @@ namespace hearmebackend.repository.Migrations
 
                     b.Property<DateTime>("DataNascimento");
 
+                    b.Property<bool>("Desativado");
+
                     b.Property<int>("Genero");
 
                     b.Property<int>("GrauDeficiencia");

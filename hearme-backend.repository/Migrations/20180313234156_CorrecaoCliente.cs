@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace hearmebackend.repository.Migrations
 {
-    public partial class CorrecaoHistorico : Migration
+    public partial class CorrecaoCliente : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,6 +45,7 @@ namespace hearmebackend.repository.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     DataCriacao = table.Column<DateTime>(nullable: false),
                     DataNascimento = table.Column<DateTime>(nullable: false),
+                    Desativado = table.Column<bool>(nullable: false),
                     Genero = table.Column<int>(nullable: false),
                     GrauDeficiencia = table.Column<int>(nullable: false),
                     Nome = table.Column<string>(maxLength: 100, nullable: false),
