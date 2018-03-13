@@ -28,7 +28,7 @@ namespace hearme_backend.webapi.Controllers
         /// </summary>
         /// <param name="cadastro"></param>
         /// <returns> Caso não apresente erro, foram adicionados os dados referentes ao Usuario 
-        /// e Clientes nas suas respectivas tabelas as alterações foram salvas no Bd.</returns>
+        /// e Clientes nas suas respectivas tabelas as alterações foram salvas no BD.</returns>
         [HttpPost]
         [Route("App")]
         public IActionResult PostActionMobile([FromBody]CadastroApp cadastro)
