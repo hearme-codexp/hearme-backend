@@ -41,11 +41,11 @@ namespace hearmebackend.repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("Ativo");
+
                     b.Property<DateTime>("DataCriacao");
 
                     b.Property<DateTime>("DataNascimento");
-
-                    b.Property<bool>("Desativado");
 
                     b.Property<int>("Genero");
 

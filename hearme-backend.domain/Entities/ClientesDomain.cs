@@ -27,9 +27,8 @@ namespace hearme_backend.domain.Entities
         public Genero Genero { get; set; }
 
         public GrauDeficiencia GrauDeficiencia { get; set; }
-        
-        [DefaultValue(false)]
-        public bool Desativado { get; set; }
+       
+        public bool Ativo { get; set; } = true;
 
         public ICollection<HistoricoAlertasDomain> HistoricosAlertasDomain { get; set; } 
     }
