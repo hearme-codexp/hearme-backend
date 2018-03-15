@@ -15,7 +15,8 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace hearme_backend.webapi.Controllers
 {
-    
+
+    [Authorize]
     [ApiExplorerSettings(IgnoreApi = true)]
     [Route("api/[controller]/")]
     public class UsuarioController : Controller
@@ -30,6 +31,7 @@ namespace hearme_backend.webapi.Controllers
         }
 
         [AllowAnonymous]
+        [ApiExplorerSettings(IgnoreApi = false)]
         [HttpPost("Login")]
         public IActionResult RequestToken([FromBody] LoginViewModel request)
         {
@@ -60,7 +62,7 @@ namespace hearme_backend.webapi.Controllers
             return BadRequest("Usuário ou senha inválidos.");
         }
 
-        [Authorize]
+        
         [HttpGet]
         public IActionResult GetAction()
         {
