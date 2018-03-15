@@ -7,6 +7,8 @@ namespace hearme_backend.domain.Entities
 {
     public class UsuarioDomain : Base
     {
+        
+
         [Required]
         [EmailAddress(ErrorMessage = "Por favor insira um e-mail válido.")]
         public string Email { get; set; }

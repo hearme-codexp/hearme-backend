@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using hearme_backend.domain.Contracts;
 using hearme_backend.domain.TO;
 using hearme_backend.repository;
 using hearme_backend.repository.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,6 +16,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace hearme_backend.webapi
@@ -67,6 +70,22 @@ namespace hearme_backend.webapi
                 var xmlPath = Path.Combine(basePath, "HearMe.xml");
                 c.IncludeXmlComments(xmlPath);
             });
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = "yourdomain.com",
+                        ValidAudience = "yourdomain.com",
+                        IssuerSigningKey = new SymmetricSecurityKey(
+                            Encoding.UTF8.GetBytes(Configuration["SecurityKey"]))
+                    };
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,6 +102,8 @@ namespace hearme_backend.webapi
 
             }
 
+            app.UseAuthentication();
+
             app.UseMvc();
             app.UseStaticFiles();
             // Ativando middlewares para uso do Swagger
@@ -92,8 +113,10 @@ namespace hearme_backend.webapi
                 c.SwaggerEndpoint("/swagger/v1/swagger.json",
                     "HearMe");
             });
+
+            
         }
 
     }
-
 }
+

@@ -12,7 +12,7 @@ using System;
 namespace hearmebackend.repository.Migrations
 {
     [DbContext(typeof(HearMeContext))]
-    [Migration("20180314003542_AtivoStatus")]
+    [Migration("20180315224427_AtivoStatus")]
     partial class AtivoStatus
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
