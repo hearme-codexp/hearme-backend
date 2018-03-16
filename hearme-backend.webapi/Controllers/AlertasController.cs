@@ -2,6 +2,7 @@ using System.Linq;
 using hearme_backend.repository;
 using Microsoft.AspNetCore.Mvc;
 using hearme_backend.domain.Entities;
+using Microsoft.EntityFrameworkCore.Extensions.Internal;
 
 namespace hearme_backend.webapi.Controllers
 {
@@ -18,7 +19,11 @@ namespace hearme_backend.webapi.Controllers
         [HttpGet]
         public IActionResult GetAction()
         {
-            return Ok(_alertasContext.Alertas.ToList());
+            return Ok(_alertasContext.Alertas.Select(a => new {
+                idAlerta = a.Id,
+                nomeAlerta = a.Nome,
+                tipoAlerta = a.TipoAlertas
+            }).ToList());
         }
 
         [HttpPost]
