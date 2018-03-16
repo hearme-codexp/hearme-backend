@@ -33,6 +33,9 @@ namespace hearme_backend.webapi.Controllers
         /// e Clientes nas suas respectivas tabelas as alterações foram salvas no BD.</returns>
         [HttpPost]
         [Route("App")]
+        [ProducesResponseType(typeof(CadastroApp), 200)]
+        [ProducesResponseType(typeof(void), 400)]
+        [ProducesResponseType(typeof(void), 500)]
         public IActionResult PostActionMobile([FromBody]CadastroApp cadastro)
         {
             var usuario = new UsuarioDomain
@@ -67,6 +70,9 @@ namespace hearme_backend.webapi.Controllers
         /// e Clientes nas suas respectivas tabelas as alterações foram salvas no BD.</returns>
         [Route("Web")]
         [HttpPost]
+        [ProducesResponseType(typeof(CadastroWeb), 200)]
+        [ProducesResponseType(typeof(void), 400)]
+        [ProducesResponseType(typeof(void), 500)]
         public IActionResult PostActionWeb([FromBody]CadastroWeb cadastro)
         {
             var usuario = new UsuarioDomain
