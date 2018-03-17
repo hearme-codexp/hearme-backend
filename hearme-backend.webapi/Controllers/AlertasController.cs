@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using hearme_backend.domain.Entities;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Extensions.Internal;
+using hearme_backend.webapi.ViewModels;
 
 namespace hearme_backend.webapi.Controllers
 {
@@ -24,15 +25,15 @@ namespace hearme_backend.webapi.Controllers
         /// </remarks>
         /// <returns> Caso não apresente erro, apresenta a lista de alertas cadastrados no BD.</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(Alerta), 200)]
+        [ProducesResponseType(typeof(AlertaViewModel), 200)]
         [ProducesResponseType(typeof(void), 400)]
         [ProducesResponseType(typeof(void), 500)]
         public IActionResult GetAction()
         {
-            return Ok(_alertasContext.Alertas.Select(a => new {
-                idAlerta = a.Id,
-                nomeAlerta = a.Nome,
-                tipoAlerta = a.TipoAlertas
+            return Ok(_alertasContext.Alertas.Select(a => new AlertaViewModel(){
+                IdAlerta = a.Id,
+                NomeAlerta = a.Nome,
+                TipoAlerta = a.TipoAlertas
             }).ToList());
         }
 
