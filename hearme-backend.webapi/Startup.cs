@@ -38,6 +38,7 @@ namespace hearme_backend.webapi
         public void ConfigureServices(IServiceCollection services)
 
         {
+
             services.AddDbContext<HearMeContext>(options => options.UseSqlite(Configuration.GetConnectionString("SqliteConnection")));
             services.AddMvc().AddJsonOptions(options =>
             {
@@ -45,6 +46,10 @@ namespace hearme_backend.webapi
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 
             });
+
+            services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
+                                                                       .AllowAnyMethod()
+                                                                        .AllowAnyHeader()));
 
             // Configurando o serviço de documentação do Swagger
             services.AddSwaggerGen(c =>
@@ -93,6 +98,8 @@ namespace hearme_backend.webapi
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
         {
+
+            app.UseCors("AllowAll");
 
             if (env.IsDevelopment())
 

@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-  <DocumentationFile>bin\Debug\netcoreapp2.0\HearMe.xml</DocumentationFile>
+  <DocumentationFile>bin\Release\netcoreapp2.0\publish\HearMe.xml</DocumentationFile>
   <NoWarn>1591</NoWarn>
   </PropertyGroup>
   
