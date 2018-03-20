@@ -61,10 +61,10 @@ namespace hearme_backend.webapi.Controllers
 /// <param name="historico"></param>
 /// <returns></returns>
         [HttpPost]
-        [ProducesResponseType(typeof(void), 200)]
+        [ProducesResponseType(typeof(IEnumerable<HistoricoPostViewModel>), 200)]
         [ProducesResponseType(typeof(void), 400)]
         [ProducesResponseType(typeof(void), 500)]
-        public IActionResult PostAction([FromBody]HistoricoAlertasDomain historico)
+        public IActionResult PostAction([FromBody]HistoricoPostViewModel historico)
         {
             var historicoalertas = new HistoricoAlertasDomain
             {
@@ -77,7 +77,7 @@ namespace hearme_backend.webapi.Controllers
                         
             _historicoContext.Historico.Add(historicoalertas);
             _historicoContext.SaveChanges();
-            return Ok(historico);
+            return Ok();
         }
 
     }

@@ -17,7 +17,6 @@ namespace hearme_backend.webapi.Controllers
 {
 
     [Authorize]
-    [ApiExplorerSettings(IgnoreApi = true)]
     [Route("api/[controller]/")]
     public class UsuarioController : Controller
     {
@@ -29,10 +28,17 @@ namespace hearme_backend.webapi.Controllers
             _usuarioContext = context;
             this._configuration = configuration;
         }
-
+/// <summary>
+/// Deve ser utilizado para realizar o Login do usuário.
+/// </summary>
+/// <param name="request"></param>
+/// <returns></returns>
         [AllowAnonymous]
         [ApiExplorerSettings(IgnoreApi = false)]
         [HttpPost("Login")]
+        [ProducesResponseType(typeof(LoginViewModel), 200)]
+        [ProducesResponseType(typeof(void), 400)]
+        [ProducesResponseType(typeof(void), 500)]
         public IActionResult RequestToken([FromBody] LoginViewModel request)
         {
             var cliente = _usuarioContext.Clientes.Include(c => c.Usuario).Where(c => c.Usuario.Email == request.Email && c.Usuario.Senha == request.Senha).FirstOrDefault();
@@ -62,7 +68,7 @@ namespace hearme_backend.webapi.Controllers
             return BadRequest("Usuário ou senha inválidos.");
         }
 
-        
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet]
         public IActionResult GetAction()
         {
@@ -70,6 +76,7 @@ namespace hearme_backend.webapi.Controllers
                 .ToList());
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("{id}")]
         public IActionResult GetAction(int id)
         {
@@ -80,7 +87,8 @@ namespace hearme_backend.webapi.Controllers
             }
             return Ok(usuario);
         }
-
+        
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpPost]
         public IActionResult PostAction([FromBody]UsuarioDomain usuario)
         {
@@ -88,7 +96,8 @@ namespace hearme_backend.webapi.Controllers
             _usuarioContext.SaveChanges();
             return Ok(usuario);
         }
-
+        
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpDelete]
         public IActionResult DeleteAction([FromBody]UsuarioDomain usuario)
         {

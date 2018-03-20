@@ -25,7 +25,7 @@ namespace hearme_backend.webapi.Controllers
         /// </remarks>
         /// <returns> Caso não apresente erro, apresenta a lista de alertas cadastrados no BD.</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(AlertaViewModel), 200)]
+        [ProducesResponseType(typeof(IEnumerable<AlertaViewModel>), 200)]
         [ProducesResponseType(typeof(void), 400)]
         [ProducesResponseType(typeof(void), 500)]
         public IActionResult GetAction()
