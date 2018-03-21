@@ -18,6 +18,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
+using Pomelo.EntityFrameworkCore;
+using MySql.Data.EntityFrameworkCore;
+using MySql.Data.EntityFrameworkCore.DataAnnotations;
 
 namespace hearme_backend.webapi
 {
@@ -39,7 +42,7 @@ namespace hearme_backend.webapi
 
         {
 
-            services.AddDbContext<HearMeContext>(options => options.UseSqlite(Configuration.GetConnectionString("SqliteConnection")));
+            services.AddDbContext<HearMeContext>(options => options.UseMySQL(Configuration.GetConnectionString("MySqlConnection")));
             services.AddMvc().AddJsonOptions(options =>
             {
 
