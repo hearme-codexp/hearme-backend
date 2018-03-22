@@ -42,7 +42,7 @@ namespace hearme_backend.webapi
 
         {
 
-            services.AddDbContext<HearMeContext>(options => options.UseMySQL(Configuration.GetConnectionString("MySqlConnection")));
+            services.AddDbContext<HearMeContext>(options => options.UseMySql(Configuration.GetConnectionString("MySqlConnection")));
             services.AddMvc().AddJsonOptions(options =>
             {
 
@@ -113,7 +113,7 @@ namespace hearme_backend.webapi
             }
 
             app.UseAuthentication();
-
+            
             app.UseMvc();
             app.UseStaticFiles();
             // Ativando middlewares para uso do Swagger
