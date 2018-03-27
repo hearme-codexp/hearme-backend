@@ -44,11 +44,11 @@ namespace hearme_backend.webapi.Controllers
             var histcompleto = _historicoContext.Historico.Where(e => e.ClienteId == id)
                 .Include(c => c.Alerta)
                 .Select(h => new HistoricoViewModel(){
-                    IdHistoricoAlerta = h.Id,
-                    NomeAlerta = h.Alerta.Nome,
+                    Id = h.Id,
+                    Nome = h.Alerta.Nome,
                     Longitude = h.Lon,
                     Latitude = h.Lat,
-                    DataHistoricoAlerta = h.DataHorarioAlerta
+                    Data = h.DataHorarioAlerta
                 });
 
              
