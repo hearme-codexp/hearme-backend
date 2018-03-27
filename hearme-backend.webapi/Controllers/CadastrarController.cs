@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography;
 using hearme_backend.domain.Contracts;
 using hearme_backend.domain.Entities;
 using hearme_backend.repository;
@@ -38,10 +39,11 @@ namespace hearme_backend.webapi.Controllers
         [ProducesResponseType(typeof(void), 500)]
         public IActionResult PostActionMobile([FromBody]CadastroApp cadastro)
         {
+            var u = new CriptografaJa();
             var usuario = new UsuarioDomain
             {
                 Email = cadastro.Email,
-                Senha = cadastro.Senha
+                Senha = u.generateHashString(cadastro.Senha)
             };
             var cliente = new ClientesDomain
             {
@@ -75,10 +77,11 @@ namespace hearme_backend.webapi.Controllers
         [ProducesResponseType(typeof(void), 500)]
         public IActionResult PostActionWeb([FromBody]CadastroWeb cadastro)
         {
+            var u = new CriptografaJa();
             var usuario = new UsuarioDomain
             {
                 Email = cadastro.Email,
-                Senha = cadastro.Senha
+                Senha = u.generateHashString(cadastro.Senha)
             };
             var cliente = new ClientesDomain
             {

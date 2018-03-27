@@ -41,8 +41,11 @@ namespace hearme_backend.webapi.Controllers
         [ProducesResponseType(typeof(void), 500)]
         public IActionResult RequestToken([FromBody] LoginViewModel request)
         {
-            var cliente = _usuarioContext.Clientes.Include(c => c.Usuario).Where(c => c.Usuario.Email == request.Email && c.Usuario.Senha == request.Senha).FirstOrDefault();
-            if (cliente!=null)
+            CriptografaJa u = new CriptografaJa();
+            var Senha = u.generateHashString(request.Senha);
+            var cliente = _usuarioContext.Clientes.Include(c => c.Usuario).Where(c => c.Usuario.Email == request.Email).FirstOrDefault();
+            
+            if (cliente.Usuario.Senha == Senha)
             {
                 var claims = new[]
                 {
