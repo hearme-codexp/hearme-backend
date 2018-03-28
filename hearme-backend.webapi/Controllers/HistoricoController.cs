@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using hearme_backend.domain.Entities;
 using hearme_backend.repository;
@@ -17,6 +19,8 @@ namespace hearme_backend.webapi.Controllers
         {
             _historicoContext = context;
         }
+
+
         [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet]
         public IActionResult GetAction()
@@ -55,6 +59,38 @@ namespace hearme_backend.webapi.Controllers
 
             return Ok(histcompleto);
         }
+        
+        /// <summary>
+        /// Lista a quantidade de Alertas por Minuto conforme o Id do Cliente.
+        /// </summary>
+        /// <remarks>
+        ///  
+        /// </remarks>
+        /// <param name="id">Informar o Id do Cliente</param>
+        /// <returns></returns>
+        [HttpGet("cliente/Graph/{id}")]
+        [ProducesResponseType(typeof(IEnumerable<HistoricoGraph>), 200)]
+        [ProducesResponseType(typeof(void), 400)]
+        [ProducesResponseType(typeof(void), 500)]
+        public IActionResult GetActionGraph(int id)
+        {
+            DateTime today = DateTime.Now;
+            DateTime fiveDaysAgo = today.AddDays(-5);
+            var histcompleto = _historicoContext.Historico
+                .Where(
+                    e => e.ClienteId == id
+                    && 
+                    e.DataHorarioAlerta >= fiveDaysAgo
+                )
+                .Include(c => c.Alerta)
+                .GroupBy(i => i.DataHorarioAlerta.ToString("dd/MM/yyyy HH:mm"))
+                .Select(i => new{
+                    Hora = DateTime.ParseExact(i.Key, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None),
+                    Count = i.Count()
+                });
+            return Ok(histcompleto);
+        }
+
 /// <summary>
 /// Deve ser utilizado para cadastar o histórico de alertas do cliente.
 /// </summary>
