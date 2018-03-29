@@ -48,11 +48,22 @@ namespace hearme_backend.webapi.Controllers
         /// </remarks>
         /// <returns> Caso não apresente erro, o cadastro do Nome do Alerta e o Tipo de Alerta foram salvos com sucesso.</returns>
         [HttpPost]
+        [ProducesResponseType(typeof(AlertaViewModel), 200)]
+        [ProducesResponseType(typeof(void), 400)]
         public IActionResult PostAction([FromBody]Alerta alerta)
         {
-            _alertasContext.Alertas.Add(alerta);
-            _alertasContext.SaveChanges();
-            return Ok(alerta);
+            var achei = _alertasContext.Alertas.FirstOrDefault(e => e.Nome == alerta.Nome);
+            if(achei!=null)
+            {
+                return BadRequest("Nome de alerta já existente !!");
+            }
+            else
+            {
+                _alertasContext.Alertas.Add(alerta);
+                _alertasContext.SaveChanges();
+                return Ok(alerta);
+            }
+            
         }
     }
 }
