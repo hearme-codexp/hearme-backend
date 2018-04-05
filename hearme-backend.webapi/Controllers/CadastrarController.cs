@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Security.Cryptography;
 using hearme_backend.domain.Contracts;
 using hearme_backend.domain.Entities;
@@ -13,13 +14,11 @@ namespace hearme_backend.webapi.Controllers
     {
         
         private readonly HearMeContext db;
-
         public CadastrarController(HearMeContext db)
         {
             this.db = db;
         }
 
-        
         /// <summary>
         /// Deve ser utilizado para o cadastro de novos usuários via Mobile. 
         /// </summary>
@@ -39,6 +38,9 @@ namespace hearme_backend.webapi.Controllers
         [ProducesResponseType(typeof(void), 500)]
         public IActionResult PostActionMobile([FromBody]CadastroApp cadastro)
         {
+            var emailJaExiste = db.Usuarios.Any(e => e.Email == cadastro.Email);
+            if(emailJaExiste)
+                return BadRequest("Email já cadastrado");
             var u = new CriptografaJa();
             var usuario = new UsuarioDomain
             {
@@ -77,6 +79,10 @@ namespace hearme_backend.webapi.Controllers
         [ProducesResponseType(typeof(void), 500)]
         public IActionResult PostActionWeb([FromBody]CadastroWeb cadastro)
         {
+            var emailJaExiste = db.Usuarios.Any(e => e.Email == cadastro.Email);
+            if(emailJaExiste)
+                return BadRequest("Email já cadastrado");
+
             var u = new CriptografaJa();
             var usuario = new UsuarioDomain
             {

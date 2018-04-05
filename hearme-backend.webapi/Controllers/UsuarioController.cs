@@ -44,32 +44,32 @@ namespace hearme_backend.webapi.Controllers
             CriptografaJa u = new CriptografaJa();
             var Senha = u.generateHashString(request.Senha);
             var cliente = _usuarioContext.Clientes.Include(c => c.Usuario).Where(c => c.Usuario.Email == request.Email).FirstOrDefault();
-            
-            if (cliente.Usuario.Senha == Senha)
-            {
-                var claims = new[]
-                {
-                    new Claim(ClaimTypes.Name,cliente.Nome)
-                };
+            if(cliente == null)
+                return BadRequest("Usuário ou senha inválidos.");
+            if (cliente.Usuario.Senha == Senha){
+                    var claims = new[]
+                    {
+                        new Claim(ClaimTypes.Name,cliente.Nome)
+                    };
 
-                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["SecurityKey"]));
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["SecurityKey"]));
+                    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-                var token = new JwtSecurityToken(
-                    issuer: "yourdomain.com",
-                    audience: "yourdomain.com",
-                    claims: claims,
-                    expires: DateTime.Now.AddMinutes(30),
-                    signingCredentials: creds);
+                    var token = new JwtSecurityToken(
+                        issuer: "yourdomain.com",
+                        audience: "yourdomain.com",
+                        claims: claims,
+                        expires: DateTime.Now.AddMinutes(30),
+                        signingCredentials: creds);
 
-                return Ok(new
-                {
-                    token = new JwtSecurityTokenHandler().WriteToken(token)
-                });
+                    return Ok(new
+                    {
+                        token = new JwtSecurityTokenHandler().WriteToken(token),
+                        nome = cliente.Nome
+                    });
+                }
+                return BadRequest("Usuário ou senha inválidos.");
             }
-
-            return BadRequest("Usuário ou senha inválidos.");
-        }
 
         [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet]

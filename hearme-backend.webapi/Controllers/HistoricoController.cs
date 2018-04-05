@@ -45,6 +45,9 @@ namespace hearme_backend.webapi.Controllers
         [ProducesResponseType(typeof(void), 500)]
         public IActionResult GetAction(int id)
         {
+            var cliente = _historicoContext.Clientes.FirstOrDefault(e => e.Id == id);
+            if(cliente == null)
+                return BadRequest("Usuário Inválido");
             var histcompleto = _historicoContext.Historico.Where(e => e.ClienteId == id)
                 .Include(c => c.Alerta)
                 .Select(h => new HistoricoViewModel(){
@@ -54,8 +57,9 @@ namespace hearme_backend.webapi.Controllers
                     Latitude = h.Lat,
                     Data = h.DataHorarioAlerta
                 });
-
-             
+            if(histcompleto == null)
+                return BadRequest("Usuario inválido");
+            
 
             return Ok(histcompleto);
         }
@@ -74,8 +78,11 @@ namespace hearme_backend.webapi.Controllers
         [ProducesResponseType(typeof(void), 500)]
         public IActionResult GetActionGraph(int id)
         {
+            var cliente = _historicoContext.Clientes.Any(e => e.Id == id);
+            if(!cliente)
+                return BadRequest("Usuário Inválido");
             DateTime today = DateTime.Now;
-            DateTime fiveDaysAgo = today.AddDays(-5);
+            DateTime fiveDaysAgo = today.AddDays(-60);
             var histcompleto = _historicoContext.Historico
                 .Where(
                     e => e.ClienteId == id
@@ -91,17 +98,20 @@ namespace hearme_backend.webapi.Controllers
             return Ok(histcompleto);
         }
 
-/// <summary>
-/// Deve ser utilizado para cadastar o histórico de alertas do cliente.
-/// </summary>
-/// <param name="historico"></param>
-/// <returns></returns>
+        /// <summary>
+        /// Deve ser utilizado para cadastar o histórico de alertas do cliente.
+        /// </summary>
+        /// <param name="historico"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(IEnumerable<HistoricoPostViewModel>), 200)]
         [ProducesResponseType(typeof(void), 400)]
         [ProducesResponseType(typeof(void), 500)]
         public IActionResult PostAction([FromBody]HistoricoPostViewModel historico)
         {
+            var cliente = _historicoContext.Clientes.FirstOrDefault(e => e.Id == historico.ClienteId);
+            if(cliente == null)
+                return BadRequest("Usuário Inválido");
             var historicoalertas = new HistoricoAlertasDomain
             {
                 ClienteId = historico.ClienteId,
